@@ -5,12 +5,14 @@ import 'package:rt_app/screen/components/rounded_input.dart';
 class RoundedPasswordInput extends StatelessWidget {
   const RoundedPasswordInput({
     Key? key,
+    required this.icon,
     required this.hint,
-    // required this.controller,
+    required this.controller,
   }) : super(key: key);
 
+  final IconData icon;
   final String hint;
-  // final TextEditingController controller;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,11 @@ class RoundedPasswordInput extends StatelessWidget {
         }
         // FocusScope.of(context).requestFocus(FocusNode());
       },
-      // controller: controller,
+      controller: controller,
       cursorColor: blueLight,
       obscureText: true,
       decoration: InputDecoration(
-          icon: const Icon(Icons.lock, color: blueLight),
+          icon: Icon(icon, color: blueLight),
           hintText: hint,
           border: InputBorder.none),
     ));

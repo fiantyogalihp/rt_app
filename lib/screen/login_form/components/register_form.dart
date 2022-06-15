@@ -28,17 +28,19 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  TextEditingController? textController;
+  TextEditingController? textControllerId;
+  TextEditingController? textControllerPass;
+  TextEditingController? textControllerName;
 
   @override
   void initState() {
-    textController = TextEditingController();
+    textControllerId = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
-    textController!.dispose();
+    textControllerId!.dispose();
     super.dispose();
   }
 
@@ -70,17 +72,21 @@ class _RegisterFormState extends State<RegisterForm> {
                   RoundedInput(
                       icon: Icons.mail,
                       hint: 'NIK',
-                      controller: textController!),
+                      controller: textControllerId!),
                   RoundedInput(
                       icon: Icons.face_rounded,
                       hint: 'Name',
-                      controller: textController!),
-                  RoundedPasswordInput(hint: 'Password'),
+                      controller: textControllerName!),
+                  RoundedPasswordInput(
+                    icon: Icons.lock,
+                    hint: 'Password',
+                    controller: textControllerPass!,
+                  ),
                   addVerticalSpace(10),
                   RoundedButton(
                     title: 'SIGN UP',
                     onPressed: () {
-                      if (textController!.text.isNotEmpty) {
+                      if (textControllerId!.text.isNotEmpty) {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -89,6 +95,27 @@ class _RegisterFormState extends State<RegisterForm> {
                       } else {
                         errorMessage(
                             'NIK/Password', 'Please fill the Form', context);
+                      }
+                      if (textControllerId!.text.length > 6 &&
+                          textControllerPass!.text.length > 6 &&
+                          textControllerName!.text.length > 2) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Dashboard(),
+                            ));
+                      } else {
+                        errorMessage(
+                            'NIK/Password',
+                            'The NIK/Password must be at least 6 characters, and the Name must be at least 3',
+                            context);
+                      }
+
+                      if (textControllerId!.text.isEmpty ||
+                          textControllerPass!.text.isEmpty ||
+                          textControllerName!.text.isEmpty) {
+                        errorMessage('NIK/Name/Password',
+                            'The NIK/Password Cannot be empty', context);
                       }
                     },
                   ),

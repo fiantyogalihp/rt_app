@@ -68,8 +68,10 @@ class _LoginFormState extends State<LoginForm> {
                   hint: 'NIK',
                   controller: textControllerId!,
                 ),
-                const RoundedPasswordInput(
+                RoundedPasswordInput(
+                  icon: Icons.lock,
                   hint: 'Password',
+                  controller: textControllerPass!,
                 ),
                 addVerticalSpace(10),
                 RoundedButton(
