@@ -28,6 +28,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+<<<<<<< HEAD
   TextEditingController? textControllerId;
   TextEditingController? textControllerPass;
   TextEditingController? textControllerName;
@@ -35,12 +36,23 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   void initState() {
     textControllerId = TextEditingController();
+=======
+  TextEditingController? textController;
+
+  @override
+  void initState() {
+    textController = TextEditingController();
+>>>>>>> 550be805247782439d23b5b78b4b95756bd1a1b7
     super.initState();
   }
 
   @override
   void dispose() {
+<<<<<<< HEAD
     textControllerId!.dispose();
+=======
+    textController!.dispose();
+>>>>>>> 550be805247782439d23b5b78b4b95756bd1a1b7
     super.dispose();
   }
 
@@ -72,6 +84,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   RoundedInput(
                       icon: Icons.mail,
                       hint: 'NIK',
+<<<<<<< HEAD
                       controller: textControllerId!),
                   RoundedInput(
                       icon: Icons.face_rounded,
@@ -82,11 +95,23 @@ class _RegisterFormState extends State<RegisterForm> {
                     hint: 'Password',
                     controller: textControllerPass!,
                   ),
+=======
+                      controller: textController!),
+                  RoundedInput(
+                      icon: Icons.face_rounded,
+                      hint: 'Name',
+                      controller: textController!),
+                  RoundedPasswordInput(hint: 'Password'),
+>>>>>>> 550be805247782439d23b5b78b4b95756bd1a1b7
                   addVerticalSpace(10),
                   RoundedButton(
                     title: 'SIGN UP',
                     onPressed: () {
+<<<<<<< HEAD
                       if (textControllerId!.text.isNotEmpty) {
+=======
+                      if (textController!.text.isNotEmpty) {
+>>>>>>> 550be805247782439d23b5b78b4b95756bd1a1b7
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -96,6 +121,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         errorMessage(
                             'NIK/Password', 'Please fill the Form', context);
                       }
+<<<<<<< HEAD
                       if (textControllerId!.text.length > 6 &&
                           textControllerPass!.text.length > 6 &&
                           textControllerName!.text.length > 2) {
@@ -117,6 +143,8 @@ class _RegisterFormState extends State<RegisterForm> {
                         errorMessage('NIK/Name/Password',
                             'The NIK/Password Cannot be empty', context);
                       }
+=======
+>>>>>>> 550be805247782439d23b5b78b4b95756bd1a1b7
                     },
                   ),
                   addVerticalSpace(10),
